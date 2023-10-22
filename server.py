@@ -2,8 +2,10 @@ import pickle
 import pandas as pd
 from flask import Flask, request, jsonify
 from sklearn.preprocessing import StandardScaler
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 with open("heart_disease_classifier_model2", "rb") as f:
     model = pickle.load(f)
@@ -31,9 +33,7 @@ def predict():
 
     user_data_df = pd.DataFrame.from_dict(user_data)
 
-    uci_data = pd.read_csv(
-        "heart-disease (1).csv"
-    )  
+    uci_data = pd.read_csv("heart-disease (1).csv")
     uci_data = uci_data.drop("target", axis=1)
 
     scaler = StandardScaler().fit(uci_data)
