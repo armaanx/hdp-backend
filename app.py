@@ -18,7 +18,7 @@ with open("heart_disease_classifier_model2", "rb") as f:
     model = pickle.load(f)
 
 
-@app.route("/predict", methods=["POST", "OPTIONS"])
+@app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
 
