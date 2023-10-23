@@ -7,7 +7,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://hdp2.vercel.app/"])
 limiter = Limiter(
     get_remote_address,
     app=app,
